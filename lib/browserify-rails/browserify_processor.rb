@@ -206,8 +206,8 @@ module BrowserifyRails
       output = output_file.read
 
       # Destroy the temp file (good practice)
-      output_file.close
-      output_file.unlink
+      output_file.close if config.output_file
+      output_file.unlink if config.output_file
 
       # Some command flags (such as --list) make the output go to stdout,
       # ignoring -o. If this happens, we give out stdout instead.
