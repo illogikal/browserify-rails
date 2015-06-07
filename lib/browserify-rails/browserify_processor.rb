@@ -134,6 +134,12 @@ module BrowserifyRails
       env_hash
     end
 
+    def output_file
+      file_path = config.browserify_rails.output_file
+      return File.open(file_path, 'w+') if file_path
+      Tempfile.new("output", rails_path(tmp_path))
+    end
+
     # Run the requested version of browserify (browserify or browserifyinc)
     # based on configuration or the use_browserifyinc parameter if present.
     #
@@ -161,7 +167,6 @@ module BrowserifyRails
 
       # Create a temporary file for the output. Such file is necessary when
       # using browserifyinc, but we use it in all instances for consistency
-      output_file = Tempfile.new("output", rails_path(tmp_path))
       command_options << " -o #{output_file.path.inspect}"
 
       # Compose the full command (using browserify or browserifyinc as necessary)
