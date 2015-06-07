@@ -135,7 +135,7 @@ module BrowserifyRails
     end
 
     def output_file
-      file_path = config.browserify_rails.output_file
+      file_path = config.output_file
       return File.open(file_path, 'w+') if file_path
       Tempfile.new("output", rails_path(tmp_path))
     end
