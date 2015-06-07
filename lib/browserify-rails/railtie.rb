@@ -15,7 +15,7 @@ module BrowserifyRails
 
     # Should node_modules be evaluated assets before run_browserify
     config.browserify_rails.evaluate_node_modules = false
-    config.browserify_rails.output_file = null
+    config.browserify_rails.output_file = nil
 
     # Environments to generate source maps in
     config.browserify_rails.source_map_environments = []
